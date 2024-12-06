@@ -63,6 +63,9 @@ public class MovimentacaoServico implements ServicoBase<Movimentacao> {
     		return false;
     	}
     	if(movimentacao.getTipoTransacao() == "saque" || movimentacao.getTipoTransacao() == "pix" || movimentacao.getTipoTransacao() == "pagamento" || movimentacao.getTipoTransacao() == "debito") {
+    		if(validarFraude(movimentacao)) {
+    			return false;
+    		}
     		if(verificarSaldo(CalcularTransacoes.calcularSaldo(movimentacao.getConta().getCliente().getCpf()), movimentacao.getValorOperacao())) {
     			return false;
     		}
@@ -118,6 +121,15 @@ public class MovimentacaoServico implements ServicoBase<Movimentacao> {
     	}
     	return false;
     }
+    
+    public static boolean validarFraude(Movimentacao movimentacao) {
+    	if(movimentacao.getValorOperacao() > CalcularTransacoes.calcularMediaTransacoes(movimentacao.getConta().getCliente().getCpf()) + 500.) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public
 }
 
 

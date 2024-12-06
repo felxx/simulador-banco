@@ -5,7 +5,7 @@ import java.util.List;
 import dao.ContaDAO;
 import entidade.Conta;
 
-public class totalContas {
+public class TotalContas {
 	
 	static ContaDAO dao = new ContaDAO();
 	

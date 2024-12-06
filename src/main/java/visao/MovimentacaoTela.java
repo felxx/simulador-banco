@@ -10,7 +10,7 @@ import entidade.ContaTipo;
 import entidade.Movimentacao;
 import servico.MovimentacaoServico;
 import util.ValidarCPF;
-import util.totalContas;
+import util.TotalContas;
 
 public class MovimentacaoTela {
 	public static void main(String[] args) {
@@ -28,7 +28,7 @@ public class MovimentacaoTela {
 			conta.setCliente(cliente);
 			conta.setContaTipo(ContaTipo.CONTA_CORRENTE);
 			
-			if(totalContas.total(cliente.getCpf())) {
+			if(TotalContas.total(cliente.getCpf())) {
 				contaDao.inserir(conta);
 		
 				MovimentacaoControle controle = new MovimentacaoControle();
