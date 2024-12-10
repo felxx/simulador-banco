@@ -128,8 +128,6 @@ public class MovimentacaoServico implements ServicoBase<Movimentacao> {
     	}
     	return false;
     }
-    
-    public
 }
 
 

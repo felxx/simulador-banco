@@ -10,6 +10,7 @@ import entidade.ContaTipo;
 import entidade.Movimentacao;
 import servico.MovimentacaoServico;
 import util.ValidarCPF;
+import util.Cashback;
 import util.TotalContas;
 
 public class MovimentacaoTela {
@@ -33,12 +34,15 @@ public class MovimentacaoTela {
 		
 				MovimentacaoControle controle = new MovimentacaoControle();
 				
+				Movimentacao movimentacaoCashback = Cashback.voltarCashback(conta);
+				
 				Movimentacao movimentacao = new Movimentacao();
 				movimentacao.setDescricao("saque de 6000.0");
 				movimentacao.setTipoTransacao("deposito");
 				movimentacao.setValorOperacao(1000.);
 				movimentacao.setConta(conta);
 				
+				controle.inserir(movimentacaoCashback);
 				controle.inserir(movimentacao);
 			}
 		}
